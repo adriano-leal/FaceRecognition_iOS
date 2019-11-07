@@ -7,14 +7,26 @@
 //
 
 import UIKit
+import ARKit
+import Vision
+import AVKit
+import CoreML
+import SceneKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ARSessionDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    let sceneView = ARSCNView(frame: UIScreen.main.bounds)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.view.addSubview(sceneView)
+        sceneView.delegate = self
+        sceneView.showsStatistics = true
+        
     }
-
-
 }
 
+extension ViewController: ARSCNViewDelegate {
+    
+}
